@@ -3,6 +3,14 @@ using namespace std;
 
 
 // DFS
+//steps for dfs cycle detection in undirected graph
+//1. create a visited array to keep track of visited nodes
+//2. for each unvisited node, call the recursive function isCycle
+//3. in isCycle function, mark the current node as visited
+//4. for each neighbour of the current node, if it is not visited, recursively call isCycle
+//5. if the neighbour is visited and is not the parent of the current node, then a cycle is detected    
+
+
 bool isCycle(vector<vector<int>>&adj,int node, int parent, vector<int>&visited){
     visited[node]=1;
     for(int j=0;j<adj[node].size();j++){
@@ -33,6 +41,13 @@ int main(){
 
 
 // BFS
+//steps for bfs cycle detection in undirected graph
+//1. create a visited array to keep track of visited nodes
+//2. for each unvisited node, call the BFS function
+//3. in BFS function, use a queue to perform level order traversal
+//4. for each neighbour of the current node, if it is not visited, mark it as visited and push it to the queue with current node as parent
+//5. if the neighbour is visited and is not the parent of the current node, then a cycle is detected
+
 bool BFS(int vertex, vector<int>adj, vector<bool>&visited){
     queue<pair<int,int>>q;
     visited[vertex]=1;
